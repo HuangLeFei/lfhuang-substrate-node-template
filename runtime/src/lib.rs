@@ -29,7 +29,8 @@ use sp_version::RuntimeVersion;
 pub use frame_support::{
 	construct_runtime, parameter_types,
 	traits::{
-		ConstU128, ConstU32, ConstU64, ConstU8, KeyOwnerProofSystem, Randomness, StorageInfo,
+		ConstU128, ConstU32, ConstU64, ConstU8, KeyOwnerProofSystem, Nothing, Randomness,
+		StorageInfo,
 	},
 	weights::{
 		constants::{
@@ -301,6 +302,62 @@ impl lfhuang_config2_template::Config for Runtime {
 	type AccountBalanceType = u128; //指定具体的类型
 }
 
+//配置pallet_contracts
+use pallet_contracts::weights::WeightInfo;
+const AVERAGE_ON_INITIALIZE_RATIO: Perbill = Perbill::from_percent(10);
+
+pub mod currency {
+	use node_primitives::Balance;
+
+	pub const MILLICENTS: Balance = 1_000_000_000;
+	// assume this is worth about a cent.
+	pub const CENTS: Balance = 1_000 * MILLICENTS;
+	pub const DOLLARS: Balance = 100 * CENTS;
+
+	pub const fn deposit(items: u32, bytes: u32) -> Balance {
+		items as Balance * 15 * CENTS + (bytes as Balance) * 6 * CENTS
+	}
+}
+
+parameter_types! {
+pub const DepositPerItem: Balance = currency::deposit(1, 0);
+pub const DepositPerByte: Balance = currency::deposit(0, 1);
+pub const MaxValueSize: u32 = 16 * 1024;
+pub DeletionWeightLimit: Weight = AVERAGE_ON_INITIALIZE_RATIO *
+  BlockWeights::get().max_block;
+//   pub DeletionQueueDepth: u32 = ((DeletionWeightLimit::get() / (
+// 	  <Runtime as pallet_contracts::Config>::WeightInfo::on_initialize_per_queue_item(1) -
+// 	  <Runtime as pallet_contracts::Config>::WeightInfo::on_initialize_per_queue_item(0)
+// 	)) / 5) as u32;
+  pub Schedule: pallet_contracts::Schedule<Runtime> = Default::default();
+}
+use scale_info::Type;
+impl pallet_contracts::Config for Runtime {
+	type Time = Timestamp;
+	type Randomness = RandomnessCollectiveFlip;
+	type Currency = Balances;
+	type RuntimeEvent = RuntimeEvent;
+	type RuntimeCall = RuntimeCall;
+	type CallFilter = Nothing;
+	type DepositPerItem = DepositPerItem;
+	type DepositPerByte = DepositPerByte;
+	type CallStack = [pallet_contracts::Frame<Self>; 31];
+	type WeightPrice = pallet_transaction_payment::Pallet<Self>;
+	type WeightInfo = pallet_contracts::weights::SubstrateWeight<Self>;
+	type ChainExtension = ();
+	type DeletionQueueDepth = ();
+	type DeletionWeightLimit = ();
+	type MaxCodeLen = ();
+	type MaxStorageKeyLen = ();
+	type UnsafeUnstableInterface = ();
+	type MaxDebugBufferLen = ();
+	type Schedule = Schedule;
+	type AddressGenerator = pallet_contracts::DefaultAddressGenerator;
+}
+
+//配置封装后的lfhuang-extend-pallet
+impl lfhuang_extend_template::Config for Runtime {}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub struct Runtime
@@ -327,6 +384,13 @@ construct_runtime!(
 		LfhuangConfigPallet: lfhuang_config_template,
 		// 定义一个变量LfhuangConfig2Pallet，该变量是这个lfhuang_config2_template类型
 		LfhuangConfig2Pallet: lfhuang_config2_template,
+		// 注意下面两行的区别: 一定要去掉Call
+		Contracts: pallet_contracts::{Pallet, Call, Storage, Event<T>},
+		//可以显示所有调用方法
+		// Contracts: pallet_contracts,
+		//指定部分显示的调用方法
+		// Contracts: pallet_contracts::{Pallet, Storage, Event<T>},
+		ExtendContracts: lfhuang_extend_template,
 	}
 );
 

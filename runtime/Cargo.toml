@@ -38,6 +38,8 @@ sp-session = { version = "4.0.0-dev", default-features = false, git = "https://g
 sp-std = { version = "5.0.0", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.37" }
 sp-transaction-pool = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.37" }
 sp-version = { version = "5.0.0", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.37" }
+pallet-contracts = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.37" }
+node-primitives = { version = "2.0.0", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.37" }
 
 # Used for the node template's RPCs
 frame-system-rpc-runtime-api = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.37" }
@@ -53,6 +55,7 @@ lfhuang-pallet-template = { default-features = false, version = "4.0.0-dev", pat
 lfhuang-hooks-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-hooks-pallet"} 
 lfhuang-config-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-config-pallet"} 
 lfhuang-config2-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-config2-pallet"} 
+lfhuang-extend-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-extend-pallet"} 
 
 
 [build-dependencies]
@@ -81,6 +84,9 @@ std = [
 	"lfhuang-hooks-template/std", # add this line
 	"lfhuang-config-template/std", # add this line
 	"lfhuang-config2-template/std", # add this line
+	"pallet-contracts/std", # add this line
+	"node-primitives/std", # add this line
+	"lfhuang-extend-template/std", # add this line
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
 	"pallet-transaction-payment/std",
