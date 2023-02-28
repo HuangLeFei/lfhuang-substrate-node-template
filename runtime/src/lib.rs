@@ -358,6 +358,17 @@ impl pallet_contracts::Config for Runtime {
 //配置封装后的lfhuang-extend-pallet
 impl lfhuang_extend_template::Config for Runtime {}
 
+impl lfhuang_storage_provider_pallet_template::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+	type Value = u32;
+}
+
+impl lfhuang_use_storage_pallet_template::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+	type Value = u32;
+	type MyStorage = LfhuangStorageProvider;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub struct Runtime
@@ -391,6 +402,8 @@ construct_runtime!(
 		//指定部分显示的调用方法
 		// Contracts: pallet_contracts::{Pallet, Storage, Event<T>},
 		ExtendContracts: lfhuang_extend_template,
+		LfhuangStorageProvider: lfhuang_storage_provider_pallet_template,
+		LfhuangUseStoragePallet: lfhuang_use_storage_pallet_template,
 	}
 );
 
