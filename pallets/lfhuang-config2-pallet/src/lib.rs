@@ -41,7 +41,8 @@ pub mod pallet {
 	#[pallet::getter(fn account_info)]
 	pub type AccountInfo<T: Config> =
 		StorageMap<_, Blake2_128Concat, T::AccountIdType, T::AccountBalanceType, ValueQuery>;
-	// StorageMap<_, Blake2_128Concat, u32, u128, ValueQuery>; // 实际开中格式类型u32,u128可能比较多,通过在Runtime中指定具体类型来开发
+	// StorageMap<_, Blake2_128Concat, u32, u128, ValueQuery>; //
+	// 实际开中格式类型u32,u128可能比较多,通过在Runtime中指定具体类型来开发
 
 	// 5. Runtime Events
 	// Can stringify event types to metadata.
@@ -73,7 +74,7 @@ pub mod pallet {
 			ensure_signed(origin)?; //检查是否调用者权限
 
 			if AccountInfo::<T>::contains_key(account_id) {
-				return Err(Error::<T>::SetAccountInfoDuplicate.into());
+				return Err(Error::<T>::SetAccountInfoDuplicate.into())
 			}
 
 			AccountInfo::<T>::insert(&account_id, &account_balance);

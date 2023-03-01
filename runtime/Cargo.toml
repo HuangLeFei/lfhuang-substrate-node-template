@@ -58,6 +58,7 @@ lfhuang-config2-template = { default-features = false, version = "4.0.0-dev", pa
 lfhuang-extend-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-extend-pallet"} 
 lfhuang-storage-provider-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-storage-provider-pallet"} 
 lfhuang-use-storage-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-use-storage-pallet"} 
+lfhuang-debug-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-debug-pallet"} 
 
 
 [build-dependencies]
@@ -91,6 +92,7 @@ std = [
 	"lfhuang-extend-template/std", # add this line
 	"lfhuang-storage-provider-pallet-template/std", # add this line
 	"lfhuang-use-storage-pallet-template/std", # add this line
+	"lfhuang-debug-template/std", # add this line
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
 	"pallet-transaction-payment/std",

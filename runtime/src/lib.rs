@@ -369,6 +369,10 @@ impl lfhuang_use_storage_pallet_template::Config for Runtime {
 	type MyStorage = LfhuangStorageProvider;
 }
 
+impl lfhuang_debug_template::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub struct Runtime
@@ -404,6 +408,7 @@ construct_runtime!(
 		ExtendContracts: lfhuang_extend_template,
 		LfhuangStorageProvider: lfhuang_storage_provider_pallet_template,
 		LfhuangUseStoragePallet: lfhuang_use_storage_pallet_template,
+		LfhuangDebugPallet: lfhuang_debug_template,
 	}
 );
 
