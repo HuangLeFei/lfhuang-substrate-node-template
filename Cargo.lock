@@ -3085,6 +3085,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "lfhuang-ocw-signed-pallet-template"
+version = "4.0.0-dev"
+dependencies = [
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "log",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+]
+
+[[package]]
 name = "lfhuang-pallet-template"
 version = "4.0.0-dev"
 dependencies = [
@@ -4181,9 +4196,11 @@ dependencies = [
  "lfhuang-debug-template",
  "lfhuang-extend-template",
  "lfhuang-hooks-template",
+ "lfhuang-ocw-signed-pallet-template",
  "lfhuang-pallet-template",
  "lfhuang-storage-provider-pallet-template",
  "lfhuang-use-storage-pallet-template",
+ "log",
  "node-primitives",
  "pallet-aura",
  "pallet-balances",

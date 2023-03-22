@@ -9,8 +9,7 @@ pub use pallet::*;
 pub mod pallet {
 	use frame_support::pallet_prelude::*;
 	use frame_system::pallet_prelude::*;
-	use sp_runtime::print;
-	use sp_runtime::traits::Printable;
+	use sp_runtime::{print, traits::Printable};
 	use sp_std::if_std;
 
 	// Declare the pallet type
