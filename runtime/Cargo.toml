@@ -61,6 +61,7 @@ lfhuang-storage-provider-pallet-template = { default-features = false, version =
 lfhuang-use-storage-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-use-storage-pallet"} 
 lfhuang-debug-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-debug-pallet"} 
 lfhuang-ocw-signed-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-ocw-signed-pallet"} 
+lfhuang-ocw-unsigned-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-ocw-unsigned-pallet"} 
 
 
 
@@ -97,6 +98,7 @@ std = [
 	"lfhuang-use-storage-pallet-template/std", # add this line
 	"lfhuang-debug-template/std", # add this line
 	"lfhuang-ocw-signed-pallet-template/std", # add this line
+	"lfhuang-ocw-unsigned-pallet-template/std", # add this line
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
 	"pallet-transaction-payment/std",
