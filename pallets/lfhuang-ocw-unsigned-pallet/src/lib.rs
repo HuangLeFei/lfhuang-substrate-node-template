@@ -97,7 +97,7 @@ pub mod pallet {
 				/// 使用特定的标签前缀启动构建器对象。
 				ValidTransaction::with_tag_prefix(PREFIX)
 					.priority(TransactionPriority::max_value()) //优先级确定满足所有依赖项（必需标签）的两个事务的顺序。
-					.longevity(5) //交易寿命周期区块数
+					.longevity(2) //交易寿命周期区块数
 					.propagate(false) //事务传播：false交易仍将被考虑包含在当前节点上创建的块中，但永远不会发送给其他节点。
 					.build()
 			} else {

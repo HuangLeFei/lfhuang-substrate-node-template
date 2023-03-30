@@ -458,6 +458,10 @@ impl lfhuang_ocw_signed_pallet_template::Config for Runtime {
 impl lfhuang_ocw_unsigned_pallet_template::Config for Runtime {
 	type RuntimeEvent = RuntimeEvent;
 }
+// 实现pallet中的config配置
+impl lfhuang_ocw_http_pallet_template::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+}
 
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
@@ -497,6 +501,7 @@ construct_runtime!(
 		LfhuangDebugPallet: lfhuang_debug_template,
 		LfhuangOcwSignedPallet: lfhuang_ocw_signed_pallet_template,
 		LfhuangOcwUnSignedPallet: lfhuang_ocw_unsigned_pallet_template,
+		LfhuangOcwHttpPallet: lfhuang_ocw_http_pallet_template,
 	}
 );
 
