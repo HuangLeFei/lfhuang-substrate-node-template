@@ -3161,6 +3161,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "lfhuang-test-pallet-template"
+version = "4.0.0-dev"
+dependencies = [
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "log",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+]
+
+[[package]]
 name = "lfhuang-use-storage-pallet-template"
 version = "4.0.0-dev"
 dependencies = [
@@ -4196,6 +4211,7 @@ dependencies = [
  "frame-system",
  "futures",
  "jsonrpsee",
+ "lfhuang-test-pallet-template",
  "node-template-runtime",
  "pallet-transaction-payment",
  "pallet-transaction-payment-rpc",
@@ -4251,6 +4267,7 @@ dependencies = [
  "lfhuang-ocw-unsigned-pallet-template",
  "lfhuang-pallet-template",
  "lfhuang-storage-provider-pallet-template",
+ "lfhuang-test-pallet-template",
  "lfhuang-use-storage-pallet-template",
  "log",
  "node-primitives",
