@@ -1,6 +1,7 @@
 use node_template_runtime::{
-	AccountId, AuraConfig, BalancesConfig, GenesisConfig, GrandpaConfig, LfhuangTestPalletConfig,
-	Signature, SudoConfig, SystemConfig, WASM_BINARY,
+	AccountId, AuraConfig, BalancesConfig, GenesisConfig, GrandpaConfig,
+	LfhuangBenchmarkingPalletConfig, LfhuangTestPalletConfig, Signature, SudoConfig, SystemConfig,
+	WASM_BINARY,
 };
 use sc_service::ChainType;
 use sp_consensus_aura::sr25519::AuthorityId as AuraId;
@@ -152,6 +153,7 @@ fn testnet_genesis(
 			key: Some(root_key),
 		},
 		transaction_payment: Default::default(),
-		lfhuang_test_pallet: LfhuangTestPalletConfig { user: 24 },// 方法1  在chain_spec.rs设置UserType的初始值
+		lfhuang_test_pallet: LfhuangTestPalletConfig { user: 24 }, // 方法1  在chain_spec.rs设置UserType的初始值
+		lfhuang_benchmarking_pallet: LfhuangBenchmarkingPalletConfig { user: 26 }, // 方法1  在chain_spec.rs设置UserType的初始值
 	}
 }

@@ -8,8 +8,15 @@ mod mock;
 #[cfg(test)]
 mod tests;
 
+#[cfg(feature = "runtime-benchmarks")]
+mod benchmarking;
+
+pub mod weights;
+pub use weights::WeightInfo; //引入导出的weights依赖
+
 #[frame_support::pallet]
 pub mod pallet {
+	use crate::WeightInfo; // add this line
 	use codec::Codec;
 	use frame_support::{
 		pallet_prelude::*, sp_runtime::traits::AtLeast32BitUnsigned, sp_std::fmt::Debug,
@@ -32,6 +39,7 @@ pub mod pallet {
 			+ Default
 			+ MaxEncodedLen
 			+ MaybeSerializeDeserialize;
+		type WeightInfo: WeightInfo; // add this line
 	}
 
 	#[pallet::storage]
@@ -72,12 +80,16 @@ pub mod pallet {
 	#[pallet::call]
 	impl<T: Config> Pallet<T> {
 		#[pallet::call_index(0)]
-		#[pallet::weight(10_000 + T::DbWeight::get().writes(1).ref_time())]
+		// #[pallet::weight(10_000 + T::DbWeight::get().writes(1).ref_time())]
+		#[pallet::weight(<T as Config>::WeightInfo::do_something(22))]
 		pub fn do_user_info(origin: OriginFor<T>, user: T::UserType) -> DispatchResult {
-			// let who = ensure_signed(origin)?;
+			let who = ensure_signed(origin)?;
 			// root账户进行签名  需要使用sudo权限执行
-			let who = ensure_root(origin)?;
-			log::info!("🥸 🥸 🥸 ######################## called by signer：{:?}", who);
+			// let who = ensure_root(origin)?;
+			log::info!(
+				"🥸 🥸 🥸 ######################## Benchmarking called by signer：{:?}",
+				who
+			);
 			<UserStorage<T>>::put(user);
 
 			Self::deposit_event(Event::UserStored(user));

@@ -14,8 +14,12 @@ targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
 log = "0.4.17"
-codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false, features = ["derive"] }
-scale-info = { version = "2.1.1", default-features = false, features = ["derive"] }
+codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false, features = [
+	"derive",
+] }
+scale-info = { version = "2.1.1", default-features = false, features = [
+	"derive",
+] }
 
 pallet-aura = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.37" }
 pallet-balances = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.37" }
@@ -24,7 +28,7 @@ pallet-grandpa = { version = "4.0.0-dev", default-features = false, git = "https
 pallet-randomness-collective-flip = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.37" }
 pallet-sudo = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.37" }
 frame-system = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.37" }
-frame-try-runtime = { version = "0.10.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", optional = true , branch = "polkadot-v0.9.37" }
+frame-try-runtime = { version = "0.10.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", optional = true, branch = "polkadot-v0.9.37" }
 pallet-timestamp = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.37" }
 pallet-transaction-payment = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.37" }
 frame-executive = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.37" }
@@ -47,29 +51,28 @@ frame-system-rpc-runtime-api = { version = "4.0.0-dev", default-features = false
 pallet-transaction-payment-rpc-runtime-api = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.37" }
 
 # Used for runtime benchmarking
-frame-benchmarking = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", optional = true , branch = "polkadot-v0.9.37" }
-frame-system-benchmarking = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", optional = true , branch = "polkadot-v0.9.37" }
+frame-benchmarking = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", optional = true, branch = "polkadot-v0.9.37" }
+frame-system-benchmarking = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", optional = true, branch = "polkadot-v0.9.37" }
 
 # Local Dependencies
 pallet-template = { version = "4.0.0-dev", default-features = false, path = "../pallets/template" }
-lfhuang-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-pallet"} 
-lfhuang-hooks-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-hooks-pallet"} 
-lfhuang-config-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-config-pallet"} 
-lfhuang-config2-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-config2-pallet"} 
-lfhuang-extend-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-extend-pallet"} 
-lfhuang-storage-provider-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-storage-provider-pallet"} 
-lfhuang-use-storage-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-use-storage-pallet"} 
-lfhuang-debug-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-debug-pallet"} 
-lfhuang-ocw-signed-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-ocw-signed-pallet"} 
-lfhuang-ocw-unsigned-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-ocw-unsigned-pallet"} 
-lfhuang-ocw-http-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-ocw-http-pallet"} 
-lfhuang-test-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-test-pallet"} 
-
-
+lfhuang-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-pallet" }
+lfhuang-hooks-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-hooks-pallet" }
+lfhuang-config-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-config-pallet" }
+lfhuang-config2-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-config2-pallet" }
+lfhuang-extend-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-extend-pallet" }
+lfhuang-storage-provider-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-storage-provider-pallet" }
+lfhuang-use-storage-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-use-storage-pallet" }
+lfhuang-debug-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-debug-pallet" }
+lfhuang-ocw-signed-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-ocw-signed-pallet" }
+lfhuang-ocw-unsigned-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-ocw-unsigned-pallet" }
+lfhuang-ocw-http-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-ocw-http-pallet" }
+lfhuang-test-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-test-pallet" }
+lfhuang-benchmarking-pallet-template = { default-features = false, version = "4.0.0-dev", path = "../pallets/lfhuang-benchmarking-pallet" }
 
 
 [build-dependencies]
-substrate-wasm-builder = { version = "5.0.0-dev", git = "https://github.com/paritytech/substrate.git", optional = true , branch = "polkadot-v0.9.37" }
+substrate-wasm-builder = { version = "5.0.0-dev", git = "https://github.com/paritytech/substrate.git", optional = true, branch = "polkadot-v0.9.37" }
 
 [features]
 default = ["std"]
@@ -90,20 +93,21 @@ std = [
 	"pallet-randomness-collective-flip/std",
 	"pallet-sudo/std",
 	"pallet-template/std",
-	"lfhuang-pallet-template/std", # add this line
-	"lfhuang-hooks-template/std", # add this line
-	"lfhuang-config-template/std", # add this line
-	"lfhuang-config2-template/std", # add this line
-	"pallet-contracts/std", # add this line
-	"node-primitives/std", # add this line
-	"lfhuang-extend-template/std", # add this line
-	"lfhuang-storage-provider-pallet-template/std", # add this line
-	"lfhuang-use-storage-pallet-template/std", # add this line
-	"lfhuang-debug-template/std", # add this line
-	"lfhuang-ocw-signed-pallet-template/std", # add this line
-	"lfhuang-ocw-unsigned-pallet-template/std", # add this line
-	"lfhuang-ocw-http-pallet-template/std", # add this line
-	"lfhuang-test-pallet-template/std", # add this line
+	"lfhuang-pallet-template/std",                    # add this line
+	"lfhuang-hooks-template/std",                     # add this line
+	"lfhuang-config-template/std",                    # add this line
+	"lfhuang-config2-template/std",                   # add this line
+	"pallet-contracts/std",                           # add this line
+	"node-primitives/std",                            # add this line
+	"lfhuang-extend-template/std",                    # add this line
+	"lfhuang-storage-provider-pallet-template/std",   # add this line
+	"lfhuang-use-storage-pallet-template/std",        # add this line
+	"lfhuang-debug-template/std",                     # add this line
+	"lfhuang-ocw-signed-pallet-template/std",         # add this line
+	"lfhuang-ocw-unsigned-pallet-template/std",       # add this line
+	"lfhuang-ocw-http-pallet-template/std",           # add this line
+	"lfhuang-test-pallet-template/std",               # add this line
+	"lfhuang-benchmarking-pallet-template/std",       # add this line
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
 	"pallet-transaction-payment/std",
@@ -130,6 +134,7 @@ runtime-benchmarks = [
 	"pallet-template/runtime-benchmarks",
 	"pallet-timestamp/runtime-benchmarks",
 	"sp-runtime/runtime-benchmarks",
+	"lfhuang-benchmarking-pallet-template/runtime-benchmarks", # add this line
 ]
 try-runtime = [
 	"frame-try-runtime/try-runtime",

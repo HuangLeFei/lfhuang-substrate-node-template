@@ -467,6 +467,12 @@ impl lfhuang_test_pallet_template::Config for Runtime {
 	type RuntimeEvent = RuntimeEvent;
 	type UserType = u32;
 }
+// 实现pallet中的config配置
+impl lfhuang_benchmarking_pallet_template::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+	type UserType = u32;
+	type WeightInfo = lfhuang_benchmarking_pallet_template::weights::SubstrateWeight<Runtime>;
+}
 
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
@@ -508,6 +514,7 @@ construct_runtime!(
 		LfhuangOcwUnSignedPallet: lfhuang_ocw_unsigned_pallet_template,
 		LfhuangOcwHttpPallet: lfhuang_ocw_http_pallet_template,
 		LfhuangTestPallet: lfhuang_test_pallet_template,
+		LfhuangBenchmarkingPallet: lfhuang_benchmarking_pallet_template,
 	}
 );
 
@@ -555,6 +562,7 @@ mod benches {
 		[pallet_balances, Balances]
 		[pallet_timestamp, Timestamp]
 		[pallet_template, TemplateModule]
+		[lfhuang_benchmarking_pallet_template, LfhuangBenchmarkingPallet] // add this line
 	);
 }
 

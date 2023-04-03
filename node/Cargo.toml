@@ -61,6 +61,7 @@ frame-benchmarking-cli = { version = "4.0.0-dev", git = "https://github.com/pari
 # Local Dependencies
 node-template-runtime = { version = "4.0.0-dev", path = "../runtime" }
 lfhuang-test-pallet-template = { version = "4.0.0-dev", path = "../pallets/lfhuang-test-pallet"}  # add this line
+lfhuang-benchmarking-pallet-template = { version = "4.0.0-dev", path = "../pallets/lfhuang-benchmarking-pallet"}  # add this line
 
 
 # CLI-specific dependencies
